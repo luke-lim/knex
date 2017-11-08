@@ -28,7 +28,9 @@ export default function Knex(config) {
     Dialect = config.client
   } else {
     const clientName = config.client || config.dialect
-    Dialect = require(`./dialects/${aliases[clientName] || clientName}/index.js`)
+  //  Dialect = require(`./dialects/${aliases[clientName] || clientName}/index.js`)
+    Dialect = require(`./dialects/mysql/index.js`)
+
   }
   if (typeof config.connection === 'string') {
     config = assign({}, config, {connection: parseConnection(config.connection).connection})
